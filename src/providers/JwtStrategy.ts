@@ -9,8 +9,9 @@ class JwtStrategy {
   createStrategy() {
     const options = {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey   : config.JWT_SECRET,
-  };
+      secretOrKey: config.JWT_SECRET,
+    };
+
     return new Strategy(options, async (payload, done) => {
       try {
         const user = await this.userService.findByID(payload.userID);

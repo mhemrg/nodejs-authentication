@@ -33,6 +33,10 @@ class AuthController {
       token: this.jwtService.sign({ userID: user.id }),
     };
   }
+
+  sendEmail() {
+    return { message: 'logged in' }
+  }
 }
 
 export default AuthController;
