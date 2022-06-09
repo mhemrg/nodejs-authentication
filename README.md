@@ -6,7 +6,7 @@ Clone the repository first, and then run `npm i` to install the dependencies. Th
 
 Now you need to update the `.env` file and then run `npm start` to launch the app.
 
-## User Registeration
+## User Registration
 
 ```bash
 curl -X POST http://localhost:3000/auth/register \
