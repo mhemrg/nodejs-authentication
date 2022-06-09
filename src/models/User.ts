@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
+
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -21,5 +22,9 @@ userSchema.pre("save", async function(next) {
 
   next();
 });
+
+userSchema.methods.verifyPassword = function (password: string) {
+  return bcrypt.compare(password, this.password);
+};
 
 export default mongoose.model('User', userSchema);

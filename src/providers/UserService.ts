@@ -1,9 +1,14 @@
 import User from '../models/User';
 import IRegisterPayload from '../interfaces/IRegisterPayload';
+import { Document } from 'mongoose';
 
 class UserService {
-  async findOneByEmail(email: string): Promise<boolean> {
-    return Boolean(await User.findOne({ email }));
+  findByID(id: string) {
+    return User.findById(id);
+  }
+
+  findOneByEmail(email: string) {
+    return User.findOne({ email });
   }
 
   create(payload: IRegisterPayload) {
