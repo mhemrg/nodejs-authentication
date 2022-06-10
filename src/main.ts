@@ -37,6 +37,13 @@ async function bootstrap() {
     auth: 'jwt',
   });
 
+  app.route({
+    method: 'get',
+    prefix: '/auth/verify-email',
+    controller: AuthController,
+    action: 'verifyEmail',
+  });
+
   await app.listen();
 }
 

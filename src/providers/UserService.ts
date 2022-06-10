@@ -14,6 +14,12 @@ class UserService {
   create(payload: IRegisterPayload) {
     return User.create(payload);
   }
+
+  async verifyEmail(emailVerificationKey: string): Promise<boolean> {
+    const { modifiedCount } = await User.updateOne(
+      { emailVerificationKey }, { verified: true, emailVerificationKey: null });
+    return Boolean(modifiedCount);
+  }
 }
 
 export default UserService;

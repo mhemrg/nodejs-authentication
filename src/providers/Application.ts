@@ -32,10 +32,10 @@ class Application {
           await schema.validateAsync(req.query);
         }
 
-        const instance = new controller(DI.userService, DI.jwtService);
+        const instance = new controller(DI.userService, DI.jwtService, DI.mail);
 
         // TODO: Use res.json just for objects
-        return res.json(await instance[action](req.body))
+        return res.json(await instance[action]({ payload: req.body, query: req.query, user: req.user }))
       } catch (error) {
         return next(error);
       }
