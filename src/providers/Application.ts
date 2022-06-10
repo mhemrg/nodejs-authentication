@@ -23,6 +23,7 @@ class Application {
     // TODO: Use the right types
     // @ts-ignore
     this.app[method](prefix, authMiddleware, async (req, res, next) => {
+      DI.logger.log('info', `${method} ${req.url}`);
       try {
         if(method === 'post' && schema) {
           await schema.validateAsync(req.body);
